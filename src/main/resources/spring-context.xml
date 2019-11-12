@@ -47,7 +47,28 @@
         <property name="configLocation" value="classpath:mybatis-config-spring.xml"></property>
         <!-- 给实体类取别名， 建议使用这个， 日志不会乱码 -->
         <property name="typeAliasesPackage" value="cn.cnm.pojo"/>
+        <!-- MyBatisPlus配置, 很多配置项目和Mybatis是一样的 -->
+        <property name="globalConfig" ref="globalConfig"/>
+        <!--<property name="configuration" ref="configuration"/>-->
     </bean>
+
+    <!-- MyBatisPlus全局配置 -->
+    <bean id="globalConfig" class="com.baomidou.mybatisplus.core.config.GlobalConfig">
+        <!-- 配置属性都集中到了dbConfig这个类中， 所以它单独拧出来了 -->
+        <property name="dbConfig" ref="dbConfig"/>
+    </bean>
+
+    <!-- MyBatisPlus配置项 -->
+    <bean id="dbConfig" class="com.baomidou.mybatisplus.core.config.GlobalConfig.DbConfig">
+        <!-- 全局主键策略, AUTO表示自增策略， 其他配置参考枚举类IdType -->
+        <property name="idType" value="AUTO"></property>
+        <!-- 全局的表前缀配置策略， 例如tb_ -->
+        <!--<property name="tablePrefix" value="tb_"></property>-->
+    </bean>
+
+    <!-- MyBatisPlus配置， 暂时不需要 -->
+    <!--<bean id="configuration" class="com.baomidou.mybatisplus.core.MybatisConfiguration">-->
+    <!--</bean>-->
 
     <!--配置一个可以进行批量执行的sqlSession -->
     <bean id="batchSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
