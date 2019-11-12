@@ -1,5 +1,7 @@
 package cn.cnm.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,8 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor // 无参构造
 @Accessors(chain = true) // 链式风格访问
 public class Flower {
+    /* IdType.AUTO：自增主键 */
+    @TableId(type = IdType.AUTO)
     private Integer id;
     private String name;
     private Double price;

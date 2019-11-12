@@ -18,5 +18,8 @@ public class Demo {
         FlowerMapper flowerMapper = applicationContext.getBean("flowerMapper", FlowerMapper.class);
         Flower flower = flowerMapper.selectById("1");
         System.out.println(flower);
+
+        Flower insertFlower = new Flower(6, "葵花", 99.9, "中国");
+        flowerMapper.insert(insertFlower);
     }
 }
