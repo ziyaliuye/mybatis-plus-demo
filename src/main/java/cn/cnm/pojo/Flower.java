@@ -23,6 +23,6 @@ public class Flower {
     @TableId(type = IdType.AUTO)
     private Integer id;
     private String name;
-    private Double price;
+    private Float price;
     private String production;
 }
