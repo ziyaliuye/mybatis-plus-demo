@@ -50,6 +50,12 @@
         <!-- MyBatisPlus配置, 很多配置项目和Mybatis是一样的 -->
         <property name="globalConfig" ref="globalConfig"/>
         <!--<property name="configuration" ref="configuration"/>-->
+        <property name="plugins">
+            <!--分页插件注册-->
+            <list>
+                <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"></bean>
+            </list>
+        </property>
     </bean>
 
     <!-- MyBatisPlus全局配置 -->
