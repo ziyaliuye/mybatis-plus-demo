@@ -61,5 +61,7 @@ public class PageDemo {
         queryWrapper3.or(i -> i.between("id", 1, 3).ne("production", "全世界"));
         List<Flower> list2 = flowerMapper.selectList(queryWrapper3);
         list2.forEach(System.out::println);
+
+        /* 同样update和delete操作可以使用条件构造器 */
     }
 }
