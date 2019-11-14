@@ -9,6 +9,7 @@ import com.mysql.cj.x.protobuf.MysqlxExpect;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class PageDemo {
         System.out.println(iPage.getRecords());
 
         /* selectPage()方法的第二个参数QueryWrapper（条件构造器），译为查询包装的意思， 它可以包装查询分页的条件 */
-        // 第二个参数还可以是Condition， 和前者类似， 可以自由构建查询条件， 两者都继承自Wrapper， 使用差别不大
+        // MyBatis plus2.X版本参数还可以是Condition， 和前者类似， 可以自由构建查询条件， 两者都继承自Wrapper， 使用差别不大
         QueryWrapper queryWrapper = new QueryWrapper();
         /* 拼接条件时， “且”的条件可以直接.出来， 而or条件需要调用orXxx的方法（注意条件Double和Float用and会有问题） */
         // 添加and条件， 第一个参数是字段， 后两个是between的范围
@@ -63,5 +64,19 @@ public class PageDemo {
         list2.forEach(System.out::println);
 
         /* 同样update和delete操作可以使用条件构造器 */
+
+        /* 条件构造器可以使用group by、order by等操作 */
+        QueryWrapper<Flower> queryWrapper5 = new QueryWrapper();
+        // 使用正序排列， 参数可以是单个String也可以是多个字符串
+        queryWrapper5.orderByAsc("price", "id");
+        List<Flower> list3 = flowerMapper.selectList(queryWrapper5);
+        list3.forEach(System.out::println);
+
+        // SQL拼接（要注意有SQL注入风险， 需谨慎使用）
+        QueryWrapper<Flower> queryWrapper6 = new QueryWrapper();
+        // 使用正序排列， 参数可以是单个String也可以是多个字符串
+        queryWrapper6.last("order by id desc");
+        List<Flower> list6 = flowerMapper.selectList(queryWrapper6);
+        list6.forEach(System.out::println);
     }
 }
