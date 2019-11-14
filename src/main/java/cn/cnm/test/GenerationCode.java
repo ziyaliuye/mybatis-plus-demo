@@ -28,6 +28,8 @@ public class GenerationCode {
                 .setOutputDir("D:\\code")
                 // 是否覆盖文件
                 .setFileOverride(true)
+                // 是否在xml中添加二级缓存配置
+                .setEnableCache(true)
                 // 主键策略，自增
                 .setIdType(IdType.AUTO)
                 // 默认生成第一个字母带一个I， 这里设置将生成的service接口的名字的首字母是否为I去掉
