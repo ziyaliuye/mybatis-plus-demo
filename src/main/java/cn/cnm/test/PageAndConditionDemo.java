@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mysql.cj.x.protobuf.MysqlxExpect;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  * @Email 414955507@qq.com
  * @date 2019/11/13 21:37
  */
-public class PageDemo {
+public class PageAndConditionDemo {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-context.xml");
         FlowerMapper flowerMapper = applicationContext.getBean("flowerMapper", FlowerMapper.class);
@@ -28,6 +29,16 @@ public class PageDemo {
         IPage<Flower> iPage = flowerMapper.selectPage(page, null);
         // getRecords()就是返回对应的记录
         System.out.println(iPage.getRecords());
+
+        /* 使用分页对象中的其他信息 */
+        System.out.println("总条数：" + page.getTotal());
+        System.out.println("当前页码：" + page.getCurrent());
+        System.out.println("总页码：" + page.getPages());
+        System.out.println("每页显示的条数：" + page.getSize());
+        System.out.println("是否有上一页：" + page.hasPrevious());
+        System.out.println("是否有下一页：" + page.hasNext());
+        // 还可以将查询返回的对象封装到Page对象中（虽然不知道有什么用）
+        page.setRecords(iPage.getRecords());
 
         /* selectPage()方法的第二个参数QueryWrapper（条件构造器），译为查询包装的意思， 它可以包装查询分页的条件 */
         // MyBatis plus2.X版本参数还可以是Condition， 和前者类似， 可以自由构建查询条件， 两者都继承自Wrapper， 使用差别不大
