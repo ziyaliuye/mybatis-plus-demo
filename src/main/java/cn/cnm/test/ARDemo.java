@@ -46,6 +46,7 @@ public class ARDemo {
 
         /* AR分页操作 */
         System.out.println("=====");
-        flower.selectPage(new Page<>(2, 1), new QueryWrapper<Flower>().like("name", "草")).getRecords().forEach(System.out::println);
+        flower.selectPage(new Page<>(2, 1), new QueryWrapper<Flower>().like("name", "草"))
+                .getRecords().forEach(System.out::println);
     }
 }
