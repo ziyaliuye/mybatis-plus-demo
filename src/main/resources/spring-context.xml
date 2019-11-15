@@ -51,9 +51,11 @@
         <property name="globalConfig" ref="globalConfig"/>
         <!--<property name="configuration" ref="configuration"/>-->
         <property name="plugins">
-            <!--分页插件注册-->
             <list>
+                <!--分页插件注册-->
                 <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"></bean>
+                <!-- 乐观锁插件 -->
+                <bean class="com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor"/>
             </list>
         </property>
     </bean>
