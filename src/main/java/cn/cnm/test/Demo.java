@@ -19,7 +19,7 @@ public class Demo {
         Flower flower = flowerMapper.selectById("1");
         System.out.println(flower);
 
-        Flower insertFlower = new Flower(6, "葵花", 99.9F, "中国");
+        Flower insertFlower = new Flower(6, "葵花", 99.9F, "中国", null);
         flowerMapper.insert(insertFlower);
     }
 }

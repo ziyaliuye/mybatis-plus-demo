@@ -21,7 +21,7 @@ public class ARDemo {
         // 加载Spring容器
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-context.xml");
         System.out.println(applicationContext);
-        Flower flower = new Flower(10, "含羞草", 88.8F, "母鸡呀");
+        Flower flower = new Flower(10, "含羞草", 88.8F, "母鸡呀", null);
         // AR模式插入
         flower.insert();
         flower.setName("不害羞草");
