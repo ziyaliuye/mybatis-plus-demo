@@ -2,6 +2,7 @@ package cn.cnm.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,9 @@ public class Flower extends Model<Flower> {
     private String name;
     private Float price;
     private String production;
+    // 乐观锁版本号
+    @Version
+    private Integer version;
 
     /* 实现主键指定方法 */
     @Override
