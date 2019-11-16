@@ -65,7 +65,7 @@
         <!-- 配置属性都集中到了dbConfig这个类中， 所以它单独拧出来了 -->
         <property name="dbConfig" ref="dbConfig"/>
         <!-- 注册自定义全局操作 -->
-        <property name="sqlInjector" ref="mySqlInjector"></property>
+        <!--<property name="sqlInjector" ref="mySqlInjector"></property>-->
     </bean>
 
     <!-- MyBatisPlus配置项 -->
