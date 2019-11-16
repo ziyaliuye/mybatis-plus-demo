@@ -66,6 +66,8 @@
         <property name="dbConfig" ref="dbConfig"/>
         <!-- 注册自定义全局操作 -->
         <!--<property name="sqlInjector" ref="mySqlInjector"></property>-->
+        <!-- 配置公共字段填充处理器 -->
+        <property name="metaObjectHandler" ref="myMetaObjectHandler"></property>
     </bean>
 
     <!-- MyBatisPlus配置项 -->
@@ -88,4 +90,7 @@
 
     <!-- 定义自定义注入器 -->
     <bean id="mySqlInjector" class="cn.cnm.injector.MyInjector"></bean>
+
+    <!-- 公共字段填充处理器 -->
+    <bean id="myMetaObjectHandler" class="cn.cnm.handler.MyMetaObjectHandler"></bean>
 </beans>
